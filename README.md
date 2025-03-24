@@ -1,1 +1,1 @@
-# tictactoe-game_obfuscated
+# javascript file is obfuscated to mask the code

@@ -1,0 +1,263 @@
+/* General Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #3498db, #8e44ad, #f39c12, #1abc9c, #16a085); /* Vibrant and engaging gradient */
+    background-size: 500% 500%;
+    animation: gradientBG 15s ease infinite; /* Slower animation for smoothness */
+    color: #f0f0f0; /* Light text color for contrast */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+#container {
+    background: rgba(0, 0, 0, 0.3); /* Darker container background with transparency */
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.6); /* Subtle shadow for depth */
+    max-width: 450px;
+}
+
+#title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Shadow for added depth */
+}
+
+#scoreboard {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    max-width: 320px;
+    margin: 20px auto;
+    padding: 12px; /* Adjusted padding */
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    font-size: 1.2rem; /* Reduced font size */
+    font-weight: bold;
+    color: #ffcc00;
+    text-shadow: 1px 1px 5px rgba(255, 223, 0, 0.6);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+#scoreboard p {
+    margin: 0;
+    padding: 6px 8px; /* Reduced padding for a more compact look */
+    flex: 0 0 40%; /* Limits each score section width */
+    text-align: center;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #ffeb3b, #ff9800);
+    color: black;
+    font-weight: bold;
+    text-shadow: none;
+    box-shadow: inset 0px 3px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out;
+}
+
+#scoreboard p:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #ffd700, #ff9800);
+}
+
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    background-color: rgba(255, 255, 255, 0.2); /* Slightly transparent light background */
+    padding: 25px;
+    border-radius: 20px;
+    width: 330px;
+    height: 330px;
+    margin: auto;
+}
+
+.tictactoeBox {
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.5); /* Semi-transparent white background for grid boxes */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3.2rem;
+    font-weight: bold;
+    color: #333; /* Darker text for visibility */
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.tictactoeBox:hover {
+    background: rgba(255, 255, 255, 0.6); /* Slight hover effect for interactivity */
+    transform: scale(1.05);
+}
+
+#playerTurn {
+    margin-top: 25px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ffffff; /* White text for contrast */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    background-color: #4caf50; /* Lively green background */
+    padding: 10px 20px;
+    border-radius: 12px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 300px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+#playerTurn:hover {
+    transform: scale(1.05);
+    background-color: #388e3c;
+}
+
+#show {
+    display: none;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+button {
+    background: #4a90e2; /* Soft blue for buttons */
+    color: #f0f0f0;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+    font-size: 1.2rem;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+    background: #357ab7; /* Slightly darker blue for button hover */
+    transform: scale(1.05);
+}
+
+.endGame {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* highlight the winning tiles */
+.highlight {
+    background-color: yellow !important;
+    color: black;
+    font-weight: bold;
+    transition: background-color 0.5s ease-in-out;
+}
+
+/* dim the losing tiles */
+.dimmed {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: gray;
+    transition: background-color 0.5s ease-in-out;
+}
+
+/* glowing and breathing effect for winning tiles */
+@keyframes pulseEffect {
+    0% {
+        transform: scale(1);
+        background-color: yellow;
+        box-shadow: 0 0 10px rgba(255, 255, 0, 0.8);
+    }
+    50% {
+        transform: scale(1.1);
+        background-color: gold;
+        box-shadow: 0 0 20px rgba(255, 215, 0, 1);
+    }
+    100% {
+        transform: scale(1);
+        background-color: yellow;
+        box-shadow: 0 0 10px rgba(255, 255, 0, 0.8);
+    }
+}
+
+.highlight {
+    background-color: yellow !important;
+    color: black;
+    font-weight: bold;
+    animation: pulseEffect 1s infinite ease-in-out;
+    transition: background-color 0.5s ease-in-out;
+}
+
+.dimmed {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: gray;
+    transition: background-color 0.5s ease-in-out;
+}
+
+/* glowing and breathing effect for the winning player status */
+@keyframes glowingPulse {
+    0% {
+        transform: scale(1);
+        color: white;
+        text-shadow: 0 0 5px rgba(255, 223, 0, 0.8), 0 0 10px rgba(255, 215, 0, 0.6);
+    }
+    25% {
+        transform: scale(1.2);
+        color: #ffcc00;
+        text-shadow: 0 0 20px rgba(255, 223, 0, 1), 0 0 40px rgba(255, 215, 0, 0.9);
+    }
+    50% {
+        transform: scale(1.05);
+        color: #ffd700;
+        text-shadow: 0 0 15px rgba(255, 215, 0, 0.9), 0 0 30px rgba(255, 215, 0, 0.7);
+    }
+    75% {
+        transform: scale(1.1);
+        color: gold;
+        text-shadow: 0 0 25px rgba(255, 223, 0, 1), 0 0 50px rgba(255, 223, 0, 0.8);
+    }
+    100% {
+        transform: scale(1);
+        color: white;
+        text-shadow: 0 0 5px rgba(255, 223, 0, 0.8), 0 0 10px rgba(255, 215, 0, 0.6);
+    }
+}
+
+.win-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+    animation: glowingPulse 1.8s infinite ease-in-out;
+    letter-spacing: 3px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.play-again {
+    display: block;
+    font-size: 1rem;
+    color: #ffcc00;
+    font-weight: bold;
+    margin-top: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.play-again:hover {
+    color: #ffd700;
+}
+
